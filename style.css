@@ -1,4 +1,4 @@
-#movie-grid {
+#movies-grid {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -95,7 +95,7 @@ img {
 
     bottom: 0 ;
 }
-#main-title {
+#movie-title {
     float:left;
     padding-right: 25px;
 }
@@ -127,12 +127,12 @@ img {
     margin-left: 1000px;
     
 }
-#site-search {
+#search-input {
     border-radius: 10px;
     padding-left: 20px;
     margin-top: 15px;
 }
-#x-button {
+#close-search-btn {
     background-clip: content-box;
     background-color: red;
 }

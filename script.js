@@ -12,12 +12,12 @@ let page = 1;
 const descriptionElement = document.querySelector("#desc")
 // &page=
 
-const searchElement = document.querySelector("#site-search")
+const searchElement = document.querySelector("#search-input")
 
 const searchButton = document.querySelector("#search-button")
-const loadingPagesElement = document.querySelector("#load")
-const movieGridElement = document.querySelector("#movie-grid")
-const xElement = document.querySelector("#x-button")
+const loadingPagesElement = document.querySelector("#load-more-movies-btn")
+const movieGridElement = document.querySelector("#movies-grid")
+const xElement = document.querySelector("#close-search-btn")
 
 const rightPosterElement = document.querySelector("#right-poster")
 // Defining async function
@@ -73,7 +73,7 @@ async function search(value) {
 }
 
 function addMovies(movie, movieGridElement) {
-    movieGridElement.innerHTML += `<div class="movie-card"><p> ${movie.title} </p><img src = 'https://image.tmdb.org/t/p/w500${movie.poster_path}' alt = ${movie.title} onclick = addToPopupUnhide(${movie.id}) /><p>rating: ${movie.vote_average}</p></div>`
+    movieGridElement.innerHTML += `<div class="movie-card"><p class='movie-title'> ${movie.title} </p><img class='movie-poster' src = 'https://image.tmdb.org/t/p/w500${movie.poster_path}' alt = ${movie.title} onclick = addToPopupUnhide(${movie.id}) /><p class='movie-votes'>rating: ${movie.vote_average}</p></div>`
     // x.addEventListener("click", (e) => {
     //     addToPopupUnhide(movie.id)})
 }
@@ -97,7 +97,18 @@ window.onload = function () {
     let x = document.querySelector("#close")
     x.onclick = () => (popupElement.className = "popup hidden")
 
+
     loadingPagesElement.onclick = () => loadMorePages();
+
+    searchElement.addEventListener("keypress", function(event) {
+        // If the user presses the "Enter" key on the keyboard
+        if (event.key === "Enter") {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Trigger the button element with a click
+          searchButton.click();
+        }
+    })
     searchButton.onclick = (e) => search(searchElement.value)
 
     xElement.onclick = () => clearMovies(movieGridElement)
