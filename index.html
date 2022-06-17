@@ -8,26 +8,30 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h2>Flixster</h2>
+    <!-- <img id="logo" src="flix.png"> -->
+    <div id="main-title">
+        <h2>Flixster</h2>
+    </div>
 
     <input type="text" placeholder="Search.." id="site-search">
-    <button id="search-button">Search</button>
-    
+    <button class = "loading-pages" id="search-button">Search</button>
+    <button class = "loading-pages" id = "x-button">X</button>
     <div id="movie-grid" >
 
     
     </div>
     <div class="popup hidden">
         <div class ="visible">
-            <button id="close">Close</button>
+            <button class = "loading-pages" id="close">Back</button>
+            <br>
             <div class="title"></div>
-            <div><img></div>
-            <div><h5>description</h5></div>
+            <div id="right-poster"><img></div>
+            <div id="desc"><h5>description</h5></div>
         </div>
         <div class="background"></div>
        
     </div>
-    <button class="loading-pages">Load More Pages</button>
+    <button id="load" class="loading-pages">Load More Pages</button>
 </body>
 <script src="script.js"></script>
 </html>

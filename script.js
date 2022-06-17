@@ -9,22 +9,25 @@ const popupElement = document.querySelector(".popup");
 var url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_Key}`;
 
 let page = 1;
-
+const descriptionElement = document.querySelector("#desc")
 // &page=
 
 const searchElement = document.querySelector("#site-search")
 
 const searchButton = document.querySelector("#search-button")
-const loadingPagesElement = document.querySelector(".loading-pages")
+const loadingPagesElement = document.querySelector("#load")
 const movieGridElement = document.querySelector("#movie-grid")
+const xElement = document.querySelector("#x-button")
 
+const rightPosterElement = document.querySelector("#right-poster")
 // Defining async function
 async function getapi() {
     // Storing response
     let response = await fetch(url);
     // Storing data in form of JSON
     data = await response.json();
-    movies = data.results;
+    movies = data.results
+    console.log("HERE IN GET API")
     return true;
 
 }
@@ -37,7 +40,7 @@ async function loadMorePages() {
     let data = await response.json()
 
     console.log(data)
-
+    data.results.forEach(element => movies.push(element))
     data.results.forEach(element => addMovies(element, movieGridElement))
 }
 
@@ -50,10 +53,12 @@ async function addToPopupUnhide(id) {
     // Storing data in form of JSON
     myData = await response.json();
     const backgroundimg = popupElement.querySelector(".background")
-    backgroundimg.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${myData.backdrop_path}" width=100% height=100%>`
+    backgroundimg.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${myData.backdrop_path}" alt = "${myData.title}" width=100% height=100%>`
     const titleElement = popupElement.querySelector(".title")
     console.log(popupElement)
     titleElement.innerHTML = `<h1>${myData.title}<\h1>`
+    descriptionElement.innerHTML = `${myData.overview}`
+    rightPosterElement.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${myData.poster_path}" alt = "${myData.title}" width=100% height=100%>` 
     makeDivUnhidden(popupElement)
     console.log(popupElement)
 }
@@ -68,7 +73,7 @@ async function search(value) {
 }
 
 function addMovies(movie, movieGridElement) {
-    movieGridElement.innerHTML += `<div class="movie-card"><p> ${movie.title} </p><img src = 'https://image.tmdb.org/t/p/w500${movie.poster_path}'alt = "filler" onclick = addToPopupUnhide(${movie.id}) /><p>${movie.vote_average}</p></div>`
+    movieGridElement.innerHTML += `<div class="movie-card"><p> ${movie.title} </p><img src = 'https://image.tmdb.org/t/p/w500${movie.poster_path}' alt = ${movie.title} onclick = addToPopupUnhide(${movie.id}) /><p>rating: ${movie.vote_average}</p></div>`
     // x.addEventListener("click", (e) => {
     //     addToPopupUnhide(movie.id)})
 }
@@ -77,6 +82,13 @@ function makeDivUnhidden(element) {
     //element.style.display = (element.style.display == "block") ? "none": "block";
         element.className = "popup"
 }
+
+function clearMovies(movieGridElement) {
+    movieGridElement.innerHTML = ``
+    searchElement.value = ""
+    movies.forEach(element => addMovies(element, movieGridElement))
+}
+
 
 window.onload = function () {
     // Calling that async function
@@ -87,6 +99,8 @@ window.onload = function () {
 
     loadingPagesElement.onclick = () => loadMorePages();
     searchButton.onclick = (e) => search(searchElement.value)
+
+    xElement.onclick = () => clearMovies(movieGridElement)
     
 }
 
