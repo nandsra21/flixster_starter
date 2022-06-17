@@ -2,6 +2,7 @@ var movies = [];
 
 var data; 
 
+
 const API_Key = "0a28de7bcd459d4cd5d84483b253ec18";
 
 const popupElement = document.querySelector(".popup");
@@ -13,6 +14,9 @@ const descriptionElement = document.querySelector("#desc")
 // &page=
 
 const searchElement = document.querySelector("#search-input")
+const visibleElement = document.querySelector(".visible")
+
+const trailerElement = document.querySelector("#trailer")
 
 const searchButton = document.querySelector("#search-button")
 const loadingPagesElement = document.querySelector("#load-more-movies-btn")
@@ -59,6 +63,7 @@ async function addToPopupUnhide(id) {
     titleElement.innerHTML = `<h1>${myData.title}<\h1>`
     descriptionElement.innerHTML = `${myData.overview}`
     rightPosterElement.innerHTML = `<img src="https://image.tmdb.org/t/p/w500${myData.poster_path}" alt = "${myData.title}" width=100% height=100%>` 
+    trailerElement.onclick = () => addTrailer(`${myData.id}`)
     makeDivUnhidden(popupElement)
     console.log(popupElement)
 }
@@ -70,6 +75,20 @@ async function search(value) {
     // Storing data in form of JSON
     data = await response.json();
     data.results.forEach(element => addMovies(element, movieGridElement))
+}
+
+async function addTrailer(id) {
+    let x = document.querySelector("#close")
+    trailer_url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_Key}&language=en-US`
+    let response = await fetch(trailer_url)
+    // Storing data in form of JSON
+    myData = await response.json();
+    let trailer_id = ""
+    myData.results.forEach(element => {if(element.type === "Trailer"){trailer_id=element.key}})
+    rightPosterElement.innerHTML =`<iframe width="560" height="315" src="https://www.youtube.com/embed/${trailer_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    x.onclick = () => {console.log("something");popupElement.className = "popup hidden"}
+
+
 }
 
 function addMovies(movie, movieGridElement) {
@@ -95,7 +114,7 @@ window.onload = function () {
     console.log(movieGridElement);
     getapi().then((data)=>movies.forEach(element => addMovies(element, movieGridElement)));
     let x = document.querySelector("#close")
-    x.onclick = () => (popupElement.className = "popup hidden")
+    x.onclick = () => {console.log("something");popupElement.className = "popup hidden"}
 
 
     loadingPagesElement.onclick = () => loadMorePages();

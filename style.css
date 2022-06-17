@@ -120,6 +120,10 @@ img {
     line-height: 20px;
     border-radius: 15px;
 }
+#trailer {
+    padding-top: 10px;
+    font-size: larger
+}
 #right-poster {
     border-radius: 15px;
     max-height:25%;
