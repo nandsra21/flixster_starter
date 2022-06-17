@@ -2,11 +2,11 @@
 
 ## Week 1 Assignment: Flixster
 
-Submitted by: **NAME**
+Submitted by: Sravani Nanduri
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: 10 hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://nandsra21.github.io/flixster_starter/)
 
 ### Application Features
 
@@ -38,7 +38,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 - [x] Allow user to view more details about a movie within a popup.
 - [x] Improve the user experience through CSS & animation.
 - [x] Allow movie video trailers to be played using [embedded YouTube](https://support.google.com/youtube/answer/171780?hl=en)
-- [ ] Implement anything else that you can get done to improve the app functionality!
+- [x] Implement anything else that you can get done to improve the app functionality!
 
 ### Walkthrough Video
 
@@ -49,15 +49,15 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes. The report card lab helped me understand javascript, especially the drop down (because we had to hide and unhide the div, which helped with implementing popups). I also thought the personal website helped me understand basic css attributes and overall html stucture, which helped with html injection into my popup div on this project.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have spent more time on the actual design, but I wanted the functionality first.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I would love to add more animations and designs! I think I didn't have time to really focus on the css styling of the webpage.
 
 ### Open-source libraries used
 
@@ -66,3 +66,5 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+Shout out to Vincent Chen for helping me debug my project!
