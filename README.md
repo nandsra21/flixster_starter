@@ -44,6 +44,9 @@ Deployed Application (optional): [Flixster Deployed Site](https://nandsra21.gith
 
 ![projectOneSmallGif](https://user-images.githubusercontent.com/40477441/174363754-a16af8bf-bf4c-41c6-af45-cdfba4ba03bf.gif)
 
+![projectOneSmallGifSecond](https://user-images.githubusercontent.com/40477441/174399660-16a43e24-dbf1-4fee-bf32-b9265c3076ac.gif)
+
+
 
 ### Reflection
 
